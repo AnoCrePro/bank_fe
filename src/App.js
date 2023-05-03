@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import {GlobalContext} from "./context/GlobalState";
 import InOut from "./components/InOut";
+import VerifyProof from "./components/VerifyProof";
 import { useContext } from "react";
 
 const theme = createTheme({
@@ -21,7 +22,7 @@ function App() {
   return (
       <ThemeProvider theme={theme}>
         <Header/> 
-        { connectBank ? <InOut/>: ""}
+        { connectBank ? <VerifyProof/> : <InOut/>}
       </ThemeProvider>
   );
 }
