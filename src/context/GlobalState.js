@@ -5,6 +5,7 @@ import AppReducer from "./AppReducer";
 const initialState = {
   address: null,
   connect: false,
+  connectBank: false,
   web3: null,
   refresh: false,
 };
@@ -23,6 +24,10 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "UPDATE_CONNECT", payload: _connect });
   };
 
+  const updateConnectBank = (_connectBank) => {
+    dispatch({ type: "UPDATE_CONNECT_BANK", payload: _connectBank });
+  };
+
   const updateAddress = (_address) => {
     dispatch({ type: "UPDATE_ADDRESS", payload: _address });
   };
@@ -37,10 +42,12 @@ export const GlobalProvider = (props) => {
       value={{
         address: state.address,
         connect: state.connect,
+        connectBank: state.connectBank,
         web3: state.web3,
         refresh: state.refresh,
         updateWeb3,
         updateConnect,
+        updateConnectBank,
         updateAddress,
         updateRefresh,
       }}

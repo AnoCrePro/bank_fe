@@ -1,7 +1,8 @@
 import Header from "./components/Header";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { GlobalProvider } from "./context/GlobalState";
+import {GlobalContext} from "./context/GlobalState";
 import InOut from "./components/InOut";
+import { useContext } from "react";
 
 const theme = createTheme({
   typography: {
@@ -16,13 +17,12 @@ const theme = createTheme({
 })
 
 function App() {
+  const { connectBank } = useContext(GlobalContext)
   return (
-    <GlobalProvider>
       <ThemeProvider theme={theme}>
-        <Header/>
-        <InOut/>
+        <Header/> 
+        { connectBank ? <InOut/>: ""}
       </ThemeProvider>
-    </GlobalProvider>
   );
 }
 

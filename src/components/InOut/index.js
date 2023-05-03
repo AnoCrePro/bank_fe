@@ -1,14 +1,27 @@
-import React, {useState} from 'react'
-import { Container, Paper, Grid, Typography, Button } from "@mui/material"
+import React, {useContext, useState} from 'react'
+import { Container, Paper, Grid, Typography, Button, TextField } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
+import { fetchData } from '../../shared/utils/database';
+import { SERVER } from '../../shared/Constants/constants';
+import { GlobalContext } from '../../context/GlobalState';
 
 const InOut = () => {
+  const {connectBank, updateConnectBank } = useContext(GlobalContext)
   const [curTab, setCurTab] = useState("in")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
   const theme = useTheme()
 
   const handleChangeTab = (tab) => {
     setCurTab(tab)
   }
+  const handleSignIn = async () => {
+    let res = await fetchData({username: username, password: password}, SERVER + "bank/user/login")
+    if(res === true) {
+      updateConnectBank(!connectBank)
+    }
+  }
+
   return (
     <Container>
       <Paper
@@ -87,6 +100,49 @@ const InOut = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center"}}>
+                <Typography
+                  sx={{
+                    fontFamily: theme.typography,
+                    fontWeight: "1000",
+                    color: "black",
+                    fontSize: "40px"
+                  }}>
+                    Welcome back
+                </Typography>   
+                <Typography
+                  textAlign={"center"}
+                  sx={{
+                    fontFamily: theme.typography,
+                    fontWeight: "500",
+                    color: "black",
+                    fontSize: "15px"
+                  }}>
+                    Enter your email and password to sign in!
+                </Typography>
+                <TextField sx={{width: "80%", marginTop: "15px"}} label="Username" value={username} onChange={(e) => setUsername(e.target.value)} variant="outlined" />
+                <TextField sx={{width: "80%", marginTop: "15px"}} label="Password" value={password} onChange={(e) => setPassword(e.target.value)} variant="outlined" />
+                <Button
+                  sx={{
+                    backgroundColor: "white",
+                    color: "black",
+                    borderColor: theme.colors.light1,
+                    border: "1px solid black",
+                    borderRadius: "15px",
+                    textTransform: "none",
+                    height: "50px",
+                    width: "170px",
+                    fontWeight: "700",
+                    marginTop: "30px",
+                    fontFamily: theme.typography,
+                    fontSize: "17px",
+                    "&:hover": {
+                      cursor: "pointer"
+                    }
+                  }}
+                  onClick={() => handleSignIn()}
+                >
+                  Sign In
+                </Button>
               </Grid>}
             {curTab == "in" ? 
               <Grid item xs={6} 
