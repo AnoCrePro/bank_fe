@@ -10,10 +10,18 @@ const theme = createTheme({
     fontFamily: "Open Sans"
   },
   colors: {
+    color1: "#23B7EF",
+    color2: "#97A8BC",
+    color3: "#1FBDD9",
+    color4: "#0D1921",
+    color5: "#030B10",
+    color6: "#6D8198",
+    color7: "#5185AA",
+    btn: "#009FDB",
     "light1": "white",
     "light2": "#e6f2ff",
     "dark1": "#004d99",
-    "dark2": "#1877F2",
+    "dark2": "#030B10",
   }
 })
 

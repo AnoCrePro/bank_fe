@@ -4,9 +4,10 @@ import { useTheme } from '@mui/material/styles';
 import { fetchData } from '../../shared/utils/database';
 import { SERVER } from '../../shared/Constants/constants';
 import { GlobalContext } from '../../context/GlobalState';
+import { mimc7 } from "circomlib";
 
 const InOut = () => {
-  const {connectBank, updateConnectBank } = useContext(GlobalContext)
+  const {connectBank, updateConnectBank, updateUser } = useContext(GlobalContext)
   const [curTab, setCurTab] = useState("in")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -18,6 +19,7 @@ const InOut = () => {
   const handleSignIn = async () => {
     let res = await fetchData({username: username, password: password}, SERVER + "bank/user/login")
     if(res === true) {
+      updateUser(username)
       updateConnectBank(!connectBank)
     }
   }
@@ -28,10 +30,9 @@ const InOut = () => {
         sx={{
           width: "80%", 
           height: "500px", 
-          backgroundColor: "white",
-          margin: "50px auto",
-          boxShadow: "0 0 10px #1877F2"}}
-        
+          backgroundColor: "#030B10",
+          borderRadius: "10px",
+          margin: "50px auto"}}
         elevation={3} > 
           <Grid container>
             {curTab == "out" ? 
@@ -91,7 +92,7 @@ const InOut = () => {
               : 
               <Grid item xs={6} 
                 sx={{
-                  backgroundColor: "white", 
+                  backgroundColor: "#0D1921", 
                   height: "500px", 
                   borderTopLeftRadius: "5px",
                   borderBottomLeftRadius: "5px",
@@ -104,7 +105,7 @@ const InOut = () => {
                   sx={{
                     fontFamily: theme.typography,
                     fontWeight: "1000",
-                    color: "black",
+                    color: "#97A8BC",
                     fontSize: "40px"
                   }}>
                     Welcome back
@@ -114,17 +115,27 @@ const InOut = () => {
                   sx={{
                     fontFamily: theme.typography,
                     fontWeight: "500",
-                    color: "black",
+                    color: "#97A8BC",
                     fontSize: "15px"
                   }}>
                     Enter your email and password to sign in!
                 </Typography>
-                <TextField sx={{width: "80%", marginTop: "15px"}} label="Username" value={username} onChange={(e) => setUsername(e.target.value)} variant="outlined" />
-                <TextField sx={{width: "80%", marginTop: "15px"}} label="Password" value={password} onChange={(e) => setPassword(e.target.value)} variant="outlined" />
+                <TextField sx={{input: { paddingLeft: "20px", color: '#E2EDFF'}, '& .MuiOutlinedInput-root': {'& fieldset': {borderRadius: "10px"},'&:hover fieldset': {
+                    borderColor: theme.colors.color3, color: '#E2EDFF'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#6F7E8C',
+                  }, } ,  width: "100%", marginTop: "25px", backgroundColor: theme.colors.color5, borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}}  label="Username" value={username} onChange={(e) => setUsername(e.target.value)} variant="outlined" />
+                 <TextField sx={{input: { paddingLeft: "20px", color: '#E2EDFF'}, '& .MuiOutlinedInput-root': {'& fieldset': {borderRadius: "10px"},'&:hover fieldset': {
+                    borderColor: theme.colors.color3, color: '#E2EDFF'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#6F7E8C',
+                  }, } ,  width: "100%", marginTop: "25px", backgroundColor: theme.colors.color5, borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}} label="Password" value={password} onChange={(e) => setPassword(e.target.value)} variant="outlined" />
                 <Button
                   sx={{
-                    backgroundColor: "white",
-                    color: "black",
+                    backgroundColor: "#009FDB",
+                    color: "#FFFFFF",
                     borderColor: theme.colors.light1,
                     border: "1px solid black",
                     borderRadius: "15px",
@@ -147,7 +158,6 @@ const InOut = () => {
             {curTab == "in" ? 
               <Grid item xs={6} 
                 sx={{
-                  backgroundColor: "#1877F2", 
                   height: "500px", 
                   borderTopRightRadius: "5px",
                   borderBottomRightRadius: "5px",

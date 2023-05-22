@@ -6,6 +6,7 @@ const initialState = {
   address: null,
   connect: false,
   connectBank: false,
+  user: null,
   web3: null,
   refresh: false,
 };
@@ -28,6 +29,10 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "UPDATE_CONNECT_BANK", payload: _connectBank });
   };
 
+  const updateUser = (_user) => {
+    dispatch({ type: "UPDATE_USER", payload: _user})
+  }
+  
   const updateAddress = (_address) => {
     dispatch({ type: "UPDATE_ADDRESS", payload: _address });
   };
@@ -44,9 +49,11 @@ export const GlobalProvider = (props) => {
         connect: state.connect,
         connectBank: state.connectBank,
         web3: state.web3,
+        user: state.user,
         refresh: state.refresh,
         updateWeb3,
         updateConnect,
+        updateUser,
         updateConnectBank,
         updateAddress,
         updateRefresh,

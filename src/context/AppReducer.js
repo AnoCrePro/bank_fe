@@ -15,6 +15,11 @@ export default (state, action) => {
         ...state,
         connect: action.payload,
       };
+    case "UPDATE_USER":
+      return {
+        ...state,
+        user: action.payload,
+      }
     case "UPDATE_CONNECT_BANK":
       return {
         ...state,
