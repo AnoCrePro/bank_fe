@@ -51,7 +51,7 @@ const VerifyProof = () => {
             </Typography>
           </Box> 
           <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            <Link sx={{textDecoration: "none"}} href={"http://centic-packaging.vercel.app/scoring?" + "thirdPartyID=123&condition=200&web2ID=" + userHash} target="_blank">
+            <Link sx={{textDecoration: "none"}} href={"http://178.128.93.195:3001/scoring?" + "thirdPartyID=123&condition=200&web2ID=" + userHash} target="_blank">
             <Button
                   sx={{
                     backgroundColor: "#009FDB",
