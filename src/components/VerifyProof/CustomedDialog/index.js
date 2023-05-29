@@ -6,8 +6,9 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
-  TextField
+  TextField,
 } from "@mui/material";
+import {LoadingButton} from "@mui/lab"
 import CloseIcon from "@mui/icons-material/Close";
 import VerifiedIcon from '@mui/icons-material/Verified';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -30,6 +31,7 @@ const CustomedDialog = ({open, handleClose}) => {
   }
 
   const handleVerify = async () => {
+    setLoading(true)
     try {
       let start = Date.now();
       const response = await fetch(url);
@@ -46,7 +48,7 @@ const CustomedDialog = ({open, handleClose}) => {
       console.error('Error:', error);
       setSuccess(2)
     }
-    
+    setLoading(false)
   }
 
   return (
@@ -70,7 +72,8 @@ const CustomedDialog = ({open, handleClose}) => {
           { success === 0 ? <Box sx={{width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
             <Typography sx={{fontSize: "14px", marginBottom: "10px"}}>Enter your proof url</Typography>
             <TextField id="outlined-basic" label="Proof Url" variant="outlined" sx={{width: "80%", marginBottom: "20px"}} value={url} onChange={(e) => setUrl(e.target.value)}/>  
-          <Button
+          <LoadingButton
+            loading={loading}
             component="label"
             sx={{
               backgroundColor: "black",
@@ -93,7 +96,7 @@ const CustomedDialog = ({open, handleClose}) => {
               onClick={handleVerify}
               >
                 Verify
-              </Button></Box> : ""}
+              </LoadingButton></Box> : ""}
         {success === 1 ? 
         <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", margin: "50px 0"}}>
           <VerifiedIcon sx={{fontSize: "30px", fontWeight: 500, color: "green", marginRight: "10px"}}/>

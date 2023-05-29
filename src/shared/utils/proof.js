@@ -63,7 +63,7 @@ const toSolidityInput = (proof) => {
   return hexifyBigInts(unstringifyBigInts(result));
 }
 
-const verifyProof = async (proof) => {
+export async function verifyProof (proof) {
   let v_key = {
     "protocol": "groth16",
     "curve": "bn128",
@@ -177,5 +177,3 @@ const verifyProof = async (proof) => {
   const res = await window.snarkjs.groth16.verify(v_key, proof.publicSignals, proof.proof);
   return res
 }
-
-module.exports = { generateProof, toSolidityInput, verifyProof}

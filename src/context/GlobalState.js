@@ -6,7 +6,7 @@ const initialState = {
   address: null,
   connect: false,
   connectBank: false,
-  user: null,
+  user: "",
   web3: null,
   refresh: false,
 };

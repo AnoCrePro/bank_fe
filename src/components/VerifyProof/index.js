@@ -15,21 +15,10 @@ const VerifyProof = () => {
   const condition = 200
 
   useEffect(() => {
-    let hash = sha256.hex(user)
+    let hash = sha256.hex(user).substring(0, 10)
+    console.log(hash)
     setUserHash(hash)
   }, [user])
-
-  const onChangeFile = async (e) => {
-    const fileReader = new FileReader();
-    if (e.target.files && e.target.files[0]) {
-      const updatedJSON = e.target.files[0];
-      fileReader.readAsText(updatedJSON, "UTF-8");
-      fileReader.onload = e => {
-        var obj = JSON.parse(e.target.result);
-        console.log(obj)
-      };
-    };
-  };
 
   return (
     <Container>
@@ -62,13 +51,7 @@ const VerifyProof = () => {
             </Typography>
           </Box> 
           <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            <Typography
-                variant="body2"
-                sx={{ fontFamily: theme.typography, fontSize: "20px", fontWeight: "500", color: theme.colors.color2, marginTop: "20px"}}
-              >
-                Your Web2 ID: {userHash}
-            </Typography>
-            <Link sx={{textDecoration: "none"}} href={"http://localhost:3000/" + userHash + "/" + condition} target="_blank">
+            <Link sx={{textDecoration: "none"}} href={"http://centic-packaging.vercel.app/scoring?" + "thirdPartyID=123&condition=200&web2ID=" + userHash} target="_blank">
             <Button
                   sx={{
                     backgroundColor: "#009FDB",
