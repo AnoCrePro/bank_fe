@@ -76,6 +76,9 @@ const CustomedDialog = ({open, handleClose}) => {
             loading={loading}
             component="label"
             sx={{
+              "& .MuiCircularProgress-root": {
+                color: "#FFF",
+              },
               backgroundColor: "black",
               color: theme.colors.light1,
               borderColor: theme.colors.light1,

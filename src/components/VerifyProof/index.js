@@ -6,6 +6,8 @@ import {sha256} from "js-sha256"
 import { GlobalContext } from '../../context/GlobalState';
 import { verifyProof } from '../../shared/utils/proof';
 import CustomedDialog from './CustomedDialog';
+import { fetchWithAPIKey } from '../../shared/utils/database';
+import { CENTIC_SERVER, API_KEY } from '../../shared/Constants/constants';
 
 const VerifyProof = () => {
   const {user} = useContext(GlobalContext)
@@ -20,6 +22,11 @@ const VerifyProof = () => {
     setUserHash(hash)
   }, [user])
 
+  const handleGetUrl = async () => {
+    let res = await fetchWithAPIKey(CENTIC_SERVER + "centic/services/createUrl?web2Id=" + userHash, API_KEY)
+    let url = res.url
+    window.open(url, '_blank');
+  }
   return (
     <Container>
       <Paper
@@ -43,37 +50,30 @@ const VerifyProof = () => {
             >
               Verify Proof
             </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: theme.typography, fontSize: "20px", fontWeight: "500", color: theme.colors.color2}}
-            >
-              Bank Id: 123
-            </Typography>
           </Box> 
           <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            <Link sx={{textDecoration: "none"}} href={"http://178.128.93.195:3001/scoring?" + "thirdPartyID=123&condition=200&web2ID=" + userHash} target="_blank">
-            <Button
-                  sx={{
-                    backgroundColor: "#009FDB",
-                    color: "#FFFFFF",
-                    borderColor: theme.colors.light1,
-                    border: "1px solid black",
-                    borderRadius: "15px",
-                    textTransform: "none",
-                    height: "50px",
-                    width: "300px",
-                    fontWeight: "700",
-                    marginTop: "30px",
-                    fontFamily: theme.typography,
-                    fontSize: "25px",
-                    "&:hover": {
-                      cursor: "pointer"
-                    }
-                  }}
-                >
-                  Get Proof
-              </Button>
-            </Link>
+              <Button
+                    sx={{
+                      backgroundColor: "#009FDB",
+                      color: "#FFFFFF",
+                      borderColor: theme.colors.light1,
+                      border: "1px solid black",
+                      borderRadius: "15px",
+                      textTransform: "none",
+                      height: "50px",
+                      width: "300px",
+                      fontWeight: "700",
+                      marginTop: "30px",
+                      fontFamily: theme.typography,
+                      fontSize: "25px",
+                      "&:hover": {
+                        cursor: "pointer"
+                      }
+                    }}
+                    onClick={handleGetUrl}
+                  >
+                    Get Proof
+                </Button>
             <Button
                   sx={{
                     backgroundColor: "#009FDB",

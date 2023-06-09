@@ -9,3 +9,14 @@ export async function fetchData (data, url){
   let res = await json_respon.json()
   return res
 }
+
+export async function fetchWithAPIKey(url, apikey){
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'x-apikey': apikey },
+  };
+
+  let json_respon = await fetch(url, requestOptions)
+  let res = await json_respon.json()
+  return res
+}

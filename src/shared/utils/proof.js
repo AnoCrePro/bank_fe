@@ -173,7 +173,7 @@ export async function verifyProof (proof) {
      ]
     ]
    }
-
+   
   const res = await window.snarkjs.groth16.verify(v_key, proof.publicSignals, proof.proof);
   return res
 }
