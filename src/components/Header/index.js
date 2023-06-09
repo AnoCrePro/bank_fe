@@ -18,10 +18,10 @@ const Header = () => {
   const theme = useTheme()
   
   return (
-    <Box sx={{fontFamily: "Open Sans", height: "60px", backgroundColor: "black", display: "flex", alignItems: "center", justifyContent: "space-between", paddingLeft: "100px", paddingRight: "100px"}}> 
+    <Box sx={{fontFamily: "Open Sans", height: "60px", backgroundColor: "black", display: "flex", flexDirection: {"xs": "column", "lg": "row"}, alignItems: "center", justifyContent: "space-between", paddingLeft: "100px", paddingRight: "100px"}}> 
       <Box sx={{display: "flex", alignItems: "center"}}>
         <img class="header-logo" src="./Logo-Centic_copy_74x-82x.png"/> 
-        <Typography sx={{color: theme.colors.color2, fontWeight: 800, fontSize: "23px", marginLeft: "10px"}}> - Third party</Typography>
+        <Typography sx={{color: theme.colors.color2, fontWeight: 800, fontSize: "23px", marginLeft: "10px"}}> Third party</Typography>
       </Box>
       
       {user !== ""  ? <Box sx={fullId ? {

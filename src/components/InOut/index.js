@@ -36,7 +36,7 @@
           elevation={3} > 
             <Grid container>
               {curTab == "out" ? 
-              <Grid item xs={6} 
+              <Grid item xs={12} lg={6} 
                   sx={{
                     height: "500px", 
                     borderTopRightRadius: "5px",
@@ -89,10 +89,12 @@
                   </Button>
                 </Grid>
                 : 
-                <Grid item xs={6} 
+                <Grid item xs={12} lg={6} 
                   sx={{
                     backgroundColor: "#0D1921", 
-                    height: "500px", 
+                    height: {
+                      "xs": "400px",
+                      "lg": "500px"}, 
                     borderTopLeftRadius: "5px",
                     borderBottomLeftRadius: "5px",
                     padding: "50px",
@@ -105,7 +107,9 @@
                       fontFamily: theme.typography,
                       fontWeight: "1000",
                       color: "#97A8BC",
-                      fontSize: "40px"
+                      fontSize: {
+                        "xs": "25px",
+                        "lg": "40px"}
                     }}>
                       Welcome back
                   </Typography>   
@@ -115,7 +119,9 @@
                       fontFamily: theme.typography,
                       fontWeight: "500",
                       color: "#97A8BC",
-                      fontSize: "15px"
+                      fontSize: {
+                        "xs": "12px",
+                        "lg": "15px"}
                     }}>
                       Enter your proof link to sign in!
                   </Typography>
@@ -131,7 +137,7 @@
                     },
                     '&.Mui-focused fieldset': {
                       borderColor: '#6F7E8C',
-                    }, } ,  width: "100%", marginTop: "25px", backgroundColor: theme.colors.color5, borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}}  label="Password" value={password} onChange={(e) => setPassword(e.target.value)} variant="outlined" />
+                    }, } ,  width: "100%", marginTop: "25px", backgroundColor: theme.colors.color5, borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}}  label="Password" value={password} onChange={(e) => setPassword(e.target.value)} variant="outlined" type="password" />
                   <Button
                     sx={{
                       backgroundColor: "#009FDB",
@@ -156,9 +162,11 @@
                   </Button>
                 </Grid>}
               {curTab == "in" ? 
-                <Grid item xs={6} 
+                <Grid item xs={12} lg={6} 
                   sx={{
-                    height: "500px", 
+                    height: {
+                      "xs": "400px",
+                      "lg": "500px"}, 
                     borderTopRightRadius: "5px",
                     borderBottomRightRadius: "5px",
                     padding: "50px",
@@ -171,7 +179,9 @@
                       fontFamily: theme.typography,
                       fontWeight: "1000",
                       color: "white",
-                      fontSize: "40px"
+                      fontSize: {
+                        "xs": "25px",
+                        "lg": "40px"}
                     }}>
                       Sign Up
                   </Typography>
@@ -181,7 +191,9 @@
                       fontFamily: theme.typography,
                       fontWeight: "700",
                       color: "white",
-                      fontSize: "20px"
+                      fontSize: {
+                        "xs": "12px",
+                        "lg": "15px"}
                     }}>
                       Enter your personal details and start journey with us!
                   </Typography>
@@ -209,7 +221,7 @@
                   </Button>
                 </Grid>
                 : 
-                <Grid item xs={6} 
+                <Grid item xs={12} lg={6} 
                   sx={{
                     backgroundColor: "#0D1921", 
                     height: "500px", 
