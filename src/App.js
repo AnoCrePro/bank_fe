@@ -2,7 +2,10 @@ import Header from "./components/Header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import {GlobalContext} from "./context/GlobalState";
 import InOut from "./components/InOut";
-import VerifyProof from "./components/VerifyProof";
+import {Box} from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import MainPage from "./components/MainPage/index.js";
+import Lending from "./components/Lending";
 import { useContext } from "react";
 
 const theme = createTheme({
@@ -30,7 +33,14 @@ function App() {
   return (
       <ThemeProvider theme={theme}>
         <Header/> 
-        { connectBank ? <VerifyProof/> : <InOut/>}
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<InOut/>}/>
+              <Route path="/main" element={<MainPage/>}/>
+              <Route path="/lending" element={<Lending/>}/>
+          </Routes>
+        </BrowserRouter>
+        {/* { connectBank ? <VerifyProof/> : <InOut/>} */}
       </ThemeProvider>
   );
 }

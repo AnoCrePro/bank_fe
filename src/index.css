@@ -1,5 +1,5 @@
 body {
-  background-color: #030B10;
+  background-color: #FFFFF1;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7,7 +7,19 @@ body {
 }
 
 .header-logo {
-  height: 50px
+  height: 100px;
+}
+
+.new {
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.cryptoscan {
+  height: 40px;
+  border-radius: 5px
 }
 
 .podium-icon {

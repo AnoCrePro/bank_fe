@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button, Link} from '@mui/material'
 import React, {useEffect, useContext, useState} from 'react'
 import { useTheme } from '@mui/material/styles';
 import Connect from '../../shared/Connect';
@@ -18,10 +18,9 @@ const Header = () => {
   const theme = useTheme()
   
   return (
-    <Box sx={{fontFamily: "Open Sans", height: "60px", backgroundColor: "black", display: "flex", flexDirection: {"xs": "column", "lg": "row"}, alignItems: "center", justifyContent: "space-between", paddingLeft: "100px", paddingRight: "100px"}}> 
+    <Box sx={{fontFamily: "Open Sans", height: "100px", backgroundColor: "white", display: "flex", flexDirection: {"xs": "column", "lg": "row"}, alignItems: "center", justifyContent: "space-between", paddingLeft: "200px", paddingRight: "200px", boxShadow: "0 3px 3px rgb(0 0 0 / 10%)"}}> 
       <Box sx={{display: "flex", alignItems: "center"}}>
-        <img class="header-logo" src="./Logo-Centic_copy_74x-82x.png"/> 
-        <Typography sx={{color: theme.colors.color2, fontWeight: 800, fontSize: "23px", marginLeft: "10px"}}> Third party</Typography>
+        <img class="header-logo" src="./Header Logo.png"/> 
       </Box>
       
       {user !== ""  ? <Box sx={fullId ? {
@@ -72,6 +71,21 @@ const Header = () => {
               {fullId ? userHash : userHash.slice(0, 6) + "..." + userHash.slice(36, 42)}
           </Typography>
         </Box> : ""}
+      <Box sx={{display: "flex", alignItems: "center", width: "400px" , justifyContent: "space-between"}}>
+        <Link href="/main" sx={{textDecoration: "none"}}>
+          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "20px"}}>Trang chủ</Typography>
+        </Link>
+        <Link href="/lending" sx={{textDecoration: "none"}}>
+          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "20px"}}>Đăng ký vay vốn</Typography>
+        </Link>
+      </Box>
+
+      <Button sx={{
+        backgroundColor: "#2eb07f",
+        color: "white",
+        fontWeight: "700",
+        width: "130px"
+      }}>Đăng xuất</Button>
     </Box>
   )
 }
