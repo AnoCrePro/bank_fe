@@ -12,6 +12,7 @@
   const MainPage = () => {
     const {connectBank, updateConnectBank, updateUser } = useContext(GlobalContext)
     const theme = useTheme()
+    const [balance, setBalance] = useState(false)
 
     // const handleChangeTab = (tab) => {
     //   setCurTab(tab)
@@ -78,12 +79,12 @@
                 fontSize: "17px",
                 marginRight: "10px"
                 }}>
-              ************ VND
+              {balance ? "1.000.000.000" : "************"} VND
             </Typography>
             <VisibilityIcon sx={{
               fontSize: "20px",
               color: "white"
-            }}/>
+            }} onClick={() => setBalance(!balance)}/>
           </Box>
         </Paper>
         <Paper

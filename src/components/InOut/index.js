@@ -17,13 +17,15 @@
       setCurTab(tab)
     }
     const handleSignIn = async () => {
-      // let res = await fetchData({username: username, password: password}, SERVER + "bank/user/login")
-      // if(res === true) {
-      //   updateUser(username)
-      //   updateConnectBank(!connectBank)
-      // }
-      updateUser(username)
-      updateConnectBank(!connectBank)
+      let res = await fetchData({username: username, password: password}, SERVER + "bank/user/login")
+      if(res === true) {
+        await updateUser(username)
+        await updateConnectBank(!connectBank)
+        window.open("/main","_self")
+      }
+      else {
+        console.log("Wrong Information")
+      }
     }
 
     return (

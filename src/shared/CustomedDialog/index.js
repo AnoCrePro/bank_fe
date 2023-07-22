@@ -11,14 +11,50 @@ import {
 } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
+import { fetchData } from "../utils/database";
+import {SERVER} from "../Constants/constants.js"
+import { LoadingButton } from '@mui/lab';
 
 export default function CustomedDialog({ open, handleClose}) {
   const theme = useTheme()
-  const [proof, setProof] = useState("")
-  const [step, setStep] = useState(0)
+  const [url, setUrl] = useState("")
+  const [proofState, setProofState] = useState(0)
+  const [loading, setLoading] = useState(false)
 
-  const handleChangeProof = (e) => {
-    setProof(e.target.value)
+  const handleChangeUrl = (e) => {
+    setUrl(e.target.value)
+  }
+
+  const handleCloseDialog = () => {
+    setProofState(0)
+    handleClose()
+  }
+
+
+  const handleVerifyProof = async () => {
+    setLoading(true)
+    try {
+      let start = Date.now();
+      const response = await fetch(url);
+      const content = await response.text();
+      const proof = JSON.parse(content)
+      let startFunction = Date.now()
+      let res = await fetchData({proof: proof.proof, publicSignals: proof.publicSignals}, SERVER + "bank/user/verify")
+      let timeTaken = Date.now() - start;
+      let timeTaken2 = Date.now() - startFunction;
+      console.log(timeTaken)
+      console.log(timeTaken2)
+      if(res) {
+        setProofState(1)
+      }
+      else {
+        setProofState(2)
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setProofState(2)
+    }
+    setLoading(false)
   }
 
   return (
@@ -33,7 +69,7 @@ export default function CustomedDialog({ open, handleClose}) {
         height: "500px"
       }}
     >
-      {step == 0 ? <Box>
+      {proofState == 0 ? <Box>
       <DialogTitle sx={{ textAlign: "center" }} mt={3}>
         <Typography
           textAlign={"center"}
@@ -56,7 +92,7 @@ export default function CustomedDialog({ open, handleClose}) {
               color: "red",
               fontSize: "20px"
             }}>
-          Yêu cầu: Số dư địa chỉ ví lớn hơn 5 BTC
+          Yêu cầu: Số dư địa chỉ ví lớn hơn 0.5 BTC
           </Typography>
         </Box>
         
@@ -101,7 +137,7 @@ export default function CustomedDialog({ open, handleClose}) {
                     },
                     '&.Mui-focused fieldset': {
                       borderColor: '#6F7E8C',
-                    }, } ,  width: "100%", marginTop: "25px", backgroundColor: "white", borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}}  label="Địa chỉ bằng chứng" value={proof} onChange={handleChangeProof} variant="outlined" />
+                    }, } ,  width: "100%", marginTop: "25px", backgroundColor: "white", borderRadius: "10px"}} InputLabelProps={{style: {color: theme.colors.color6 },}}  label="Địa chỉ bằng chứng" value={url} onChange={handleChangeUrl} variant="outlined" />
       </DialogTitle>
       <DialogContent>
       <Box
@@ -113,7 +149,8 @@ export default function CustomedDialog({ open, handleClose}) {
           }}
         >
         </Box>
-        <Button
+        <LoadingButton
+          loading={loading}
           sx={{
             backgroundColor: "#2eb07f",
             color: "white",
@@ -128,15 +165,15 @@ export default function CustomedDialog({ open, handleClose}) {
                 cursor: "pointer"
               }
             }}
-          onClick={() => setStep(1)}
+          onClick={() => handleVerifyProof()}
           >
            Xác minh
-        </Button>
+        </LoadingButton>
         <Box sx={{display: "flex", alignItem: "center", position: "absolute", top: 10, right: 10}}>
           <img class="cryptoscan" src="/CryptoScan.png"/>
         </Box> 
       </DialogContent> </Box>: ""}
-      {/* {step == 1 ? <Box>
+      {proofState == 1 ? <Box>
       <DialogTitle sx={{ textAlign: "center" }} mt={3}>
         <Typography
           textAlign={"center"}
@@ -188,15 +225,15 @@ export default function CustomedDialog({ open, handleClose}) {
                 cursor: "pointer"
               }
             }}
-          onClick={() => setStep(1)}
+          onClick={handleCloseDialog}
           >
            Tiếp tục
         </Button>
         <Box sx={{display: "flex", alignItem: "center", position: "absolute", top: 10, right: 10}}>
           <img class="cryptoscan" src="/CryptoScan.png"/>
         </Box> 
-      </DialogContent> </Box>: ""} */}
-      {step == 1 ? <Box>
+      </DialogContent> </Box>: ""}
+      {proofState == 2 ? <Box>
       <DialogTitle sx={{ textAlign: "center" }} mt={3}>
         <Typography
           textAlign={"center"}
@@ -248,7 +285,7 @@ export default function CustomedDialog({ open, handleClose}) {
                 cursor: "pointer"
               }
             }}
-          onClick={() => setStep(1)}
+          onClick={() => handleCloseDialog()}
           >
            Thoát
         </Button>

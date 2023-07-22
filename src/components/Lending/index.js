@@ -52,7 +52,7 @@
                       color: "black",
                       fontSize: "18px",
                       }}>
-                    Cho vay lên tới 5 tỷ VNĐ
+                    Cho vay lên tới 500 triệu VNĐ
                   </Typography>
                 </Box>
                 <Box sx={{display: "flex", alignItems: "center", marginTop: "5px", justifyContent: "start"}}>
@@ -91,7 +91,7 @@
                       color: "black",
                       fontSize: "18px",
                       }}>
-                    Yêu cầu: Số dư địa chỉ ví lớn hơn 5 BTC
+                    Yêu cầu: Số dư địa chỉ ví lớn hơn 0.5 BTC
                   </Typography>
                 </Box>
               </Box>
