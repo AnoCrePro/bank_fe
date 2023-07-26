@@ -77,7 +77,7 @@ export default function CustomedDialog({ open, handleClose}) {
             fontFamily: theme.typography,
             fontWeight: "800",
             color: "#2eb07f",
-            fontSize: "40px",
+            fontSize: "45px",
             marginTop: "30px"
           }}>
         XÁC MINH ĐIỀU KIỆN
@@ -90,7 +90,7 @@ export default function CustomedDialog({ open, handleClose}) {
               fontFamily: theme.typography,
               fontWeight: "600",
               color: "red",
-              fontSize: "20px"
+              fontSize: "25px"
             }}>
           Yêu cầu: Số dư địa chỉ ví lớn hơn 0.5 BTC
           </Typography>
@@ -102,7 +102,7 @@ export default function CustomedDialog({ open, handleClose}) {
             fontFamily: theme.typography,
             fontWeight: "600",
             color: "black",
-            fontSize: "18px",
+            fontSize: "20px",
             marginTop: "10px",
             marginBottom: "10px"
           }}>
@@ -155,12 +155,12 @@ export default function CustomedDialog({ open, handleClose}) {
             backgroundColor: "#2eb07f",
             color: "white",
             textTransform: "none",
-            height: "50px",
+            height: "60px",
             width: "100%",
             fontWeight: "700",
             marginTop: "30px",
             fontFamily: theme.typography,
-            fontSize: "18px",
+            fontSize: "25px",
               "&:hover": {
                 cursor: "pointer"
               }
@@ -193,7 +193,7 @@ export default function CustomedDialog({ open, handleClose}) {
               fontFamily: theme.typography,
               fontWeight: "600",
               color: "black",
-              fontSize: "18px"
+              fontSize: "25px"
             }}>
           Nhấn tiếp tục để tiến hành đăng ký vay tín chấp Blockchain
           </Typography>
@@ -215,12 +215,12 @@ export default function CustomedDialog({ open, handleClose}) {
             backgroundColor: "#2eb07f",
             color: "white",
             textTransform: "none",
-            height: "50px",
+            height: "60px",
             width: "100%",
             fontWeight: "700",
             marginTop: "30px",
             fontFamily: theme.typography,
-            fontSize: "18px",
+            fontSize: "25px",
               "&:hover": {
                 cursor: "pointer"
               }
@@ -253,9 +253,9 @@ export default function CustomedDialog({ open, handleClose}) {
               fontFamily: theme.typography,
               fontWeight: "600",
               color: "black",
-              fontSize: "18px"
+              fontSize: "25px"
             }}>
-          Vui lòng thử lại
+          Vui lòng thử lại!
           </Typography>
         </Box>
         
@@ -275,12 +275,12 @@ export default function CustomedDialog({ open, handleClose}) {
             backgroundColor: "#2eb07f",
             color: "white",
             textTransform: "none",
-            height: "50px",
+            height: "60px",
             width: "100%",
             fontWeight: "700",
             marginTop: "30px",
             fontFamily: theme.typography,
-            fontSize: "18px",
+            fontSize: "25px",
               "&:hover": {
                 cursor: "pointer"
               }

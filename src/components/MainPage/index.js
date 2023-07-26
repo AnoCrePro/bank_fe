@@ -41,9 +41,9 @@
             textAlign={"center"}
             sx={{
               fontFamily: theme.typography,
-              fontWeight: "500",
+              fontWeight: "600",
               color: "white",
-              fontSize: "20px",
+              fontSize: "35px",
               marginTop: "50px"
               }}>
             TÀI KHOẢN THANH TOÁN
@@ -54,7 +54,8 @@
               fontFamily: theme.typography,
               fontWeight: "700",
               color: "white",
-              fontSize: "20px"
+              fontSize: "30px",
+              marginTop: "10px"
               }}>
             095123456789
           </Typography>
@@ -65,7 +66,7 @@
                 fontFamily: theme.typography,
                 fontWeight: "600",
                 color: "white",
-                fontSize: "17px",
+                fontSize: "25px",
                 marginRight: "10px"
                 }}>
               Số dư: 
@@ -76,7 +77,7 @@
                 fontFamily: theme.typography,
                 fontWeight: "700",
                 color: "white",
-                fontSize: "17px",
+                fontSize: "25px",
                 marginRight: "10px"
                 }}>
               {balance ? "1.000.000.000" : "************"} VND
@@ -106,7 +107,7 @@
                 fontFamily: theme.typography,
                 fontWeight: "600",
                 color: "white",
-                fontSize: "30px",
+                fontSize: "35px",
                 marginRight: "10px",
                 marginTop: "30px"
                 }}>
@@ -115,8 +116,8 @@
           <Box sx={{display: "flex", justifyContent: "space-around"}}>
             <Paper
               sx={{
-                width: "170px", 
-                height: "150px", 
+                width: "210px", 
+                height: "170px", 
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
@@ -132,15 +133,15 @@
                   fontFamily: theme.typography,
                   fontWeight: "700",
                   color: "#2eb07f",
-                  fontSize: "18px",
+                  fontSize: "25px",
                   }}>
               Chuyển tiền
             </Typography>
             </Paper>
             <Paper
               sx={{
-                width: "170px", 
-                height: "150px", 
+                width: "210px", 
+                height: "170px", 
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
@@ -156,7 +157,7 @@
                   fontFamily: theme.typography,
                   fontWeight: "700",
                   color: "#2eb07f",
-                  fontSize: "18px",
+                  fontSize: "25px",
                   }}>
               Quản lý thông tin cá nhân
             </Typography>
@@ -165,8 +166,8 @@
           <Box sx={{display: "flex", justifyContent: "space-around"}}>
             <Paper
               sx={{
-                width: "170px", 
-                height: "150px", 
+                width: "210px", 
+                height: "170px", 
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
@@ -182,20 +183,21 @@
                   fontFamily: theme.typography,
                   fontWeight: "700",
                   color: "#2eb07f",
-                  fontSize: "18px",
+                  fontSize: "25px",
                   }}>
               Tiết kiệm
             </Typography>
             </Paper>
             <Paper
               sx={{
-                width: "170px", 
-                height: "150px", 
+                width: "190px", 
+                height: "170px", 
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                borderRadius: "10px"}}
+                borderRadius: "10px",
+                px: "10px"}}
               elevation={3}> 
               <Box sx={{height: "80px", marginTop: "15px"}}>
                 <DriveFileRenameOutlineIcon sx={{fontSize: "80px", color: "#FFD700"}}/>
@@ -206,7 +208,7 @@
                   fontFamily: theme.typography,
                   fontWeight: "700",
                   color: "#2eb07f",
-                  fontSize: "18px",
+                  fontSize: "25px",
                   }}>
               Đăng ký vay vốn
             </Typography>

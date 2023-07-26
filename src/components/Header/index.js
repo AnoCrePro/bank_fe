@@ -18,7 +18,7 @@ const Header = () => {
   const theme = useTheme()
   
   return (
-    <Box sx={{fontFamily: "Open Sans", height: "100px", backgroundColor: "white", display: "flex", flexDirection: {"xs": "column", "lg": "row"}, alignItems: "center", justifyContent: "space-between", paddingLeft: "200px", paddingRight: "200px", boxShadow: "0 3px 3px rgb(0 0 0 / 10%)"}}> 
+    <Box sx={{fontFamily: "Open Sans", height: "120px", backgroundColor: "white", display: "flex", flexDirection: {"xs": "column", "lg": "row"}, alignItems: "center", paddingLeft: "150px", paddingRight: "150px", boxShadow: "0 3px 3px rgb(0 0 0 / 10%)"}}> 
       <Box sx={{display: "flex", alignItems: "center"}}>
         <img class="header-logo" src="./Header Logo.png"/> 
       </Box>
@@ -71,12 +71,12 @@ const Header = () => {
               {fullId ? userHash : userHash.slice(0, 6) + "..." + userHash.slice(36, 42)}
           </Typography>
         </Box> : ""}
-      <Box sx={{display: "flex", alignItems: "center", width: "400px" , justifyContent: "space-between"}}>
+      <Box sx={{display: "flex", alignItems: "center", width: "1000px" , justifyContent: "space-around"}}>
         <Link href="/main" sx={{textDecoration: "none"}}>
-          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "20px"}}>Trang chủ</Typography>
+          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "30px"}}>Trang chủ</Typography>
         </Link>
         <Link href="/lending" sx={{textDecoration: "none"}}>
-          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "20px"}}>Đăng ký vay vốn</Typography>
+          <Typography sx={{fontWeight: 700, color: "#2eb07f", transition: ".3s", fontSize: "30px"}}>Đăng ký vay vốn</Typography>
         </Link>
       </Box>
 
@@ -84,7 +84,9 @@ const Header = () => {
         backgroundColor: "#2eb07f",
         color: "white",
         fontWeight: "700",
-        width: "130px"
+        width: "200px",
+        fontSize: "23px",
+        marginLeft: "20px"
       }}>Đăng xuất</Button>
     </Box>
   )
